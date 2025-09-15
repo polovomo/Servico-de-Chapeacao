@@ -29,6 +29,7 @@ public class FrMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        btnSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -45,13 +46,32 @@ public class FrMenu extends javax.swing.JFrame {
         btnAltCliente = new javax.swing.JButton();
         btnAltServico = new javax.swing.JButton();
         btnAltPeca = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
+        btnCadPeca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
 
         jPanel1.setBackground(new java.awt.Color(235, 235, 235));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnSair.setBackground(new java.awt.Color(0, 0, 0));
+        btnSair.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSair.setForeground(new java.awt.Color(255, 255, 255));
+        btnSair.setText("X");
+        btnSair.setBorder(null);
+        btnSair.setBorderPainted(false);
+        btnSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSairMouseClicked(evt);
+            }
+        });
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 30, 30));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("Seja Bem Vindo!!");
@@ -125,7 +145,7 @@ public class FrMenu extends javax.swing.JFrame {
                 btnCadOrdemServicoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCadOrdemServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 240, 40));
+        jPanel1.add(btnCadOrdemServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 240, 40));
 
         btnConCliente.setBackground(new java.awt.Color(234, 106, 106));
         btnConCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -135,7 +155,7 @@ public class FrMenu extends javax.swing.JFrame {
                 btnConClienteMouseClicked(evt);
             }
         });
-        jPanel1.add(btnConCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 240, 40));
+        jPanel1.add(btnConCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 240, 40));
 
         btnConPeca.setBackground(new java.awt.Color(234, 106, 106));
         btnConPeca.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -165,7 +185,7 @@ public class FrMenu extends javax.swing.JFrame {
                 btnAltClienteMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAltCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 240, 40));
+        jPanel1.add(btnAltCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 240, 40));
 
         btnAltServico.setBackground(new java.awt.Color(234, 106, 106));
         btnAltServico.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -187,15 +207,20 @@ public class FrMenu extends javax.swing.JFrame {
         });
         jPanel1.add(btnAltPeca, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 240, 40));
 
-        btnSair.setBackground(new java.awt.Color(234, 106, 106));
-        btnSair.setFont(new java.awt.Font("Arial", 1, 32)); // NOI18N
-        btnSair.setText("SAIR");
-        btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCadPeca.setBackground(new java.awt.Color(234, 106, 106));
+        btnCadPeca.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnCadPeca.setText("CADASTRAR PEÇA");
+        btnCadPeca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSairMouseClicked(evt);
+                btnCadPecaMouseClicked(evt);
             }
         });
-        jPanel1.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 240, 40));
+        btnCadPeca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadPecaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCadPeca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 240, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -269,6 +294,18 @@ public class FrMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSairMouseClicked
 
+    private void btnCadPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadPecaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadPecaMouseClicked
+
+    private void btnCadPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadPecaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadPecaActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSairActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,6 +348,7 @@ public class FrMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnCadCarro;
     private javax.swing.JButton btnCadCliente;
     private javax.swing.JButton btnCadOrdemServico;
+    private javax.swing.JButton btnCadPeca;
     private javax.swing.JButton btnCadServico;
     private javax.swing.JButton btnConCarro;
     private javax.swing.JButton btnConCliente;
