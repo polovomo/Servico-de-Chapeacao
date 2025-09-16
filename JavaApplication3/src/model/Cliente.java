@@ -17,6 +17,12 @@ public class Cliente {
     private String email;
     private String endereco;
     private int fkCarro;
+    
+    
+
+    public Cliente() {
+        
+    }
 
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
@@ -66,4 +72,15 @@ public class Cliente {
         return fkCarro;
     }
 
+    public Cliente(int idCliente, String nome, String telefone, String email, String endereco, int fkCarro) {
+        this.idCliente = idCliente;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.endereco = endereco;
+        this.fkCarro = fkCarro;
+    }
+
+    
+    
 }

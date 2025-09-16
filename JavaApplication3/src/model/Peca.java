@@ -48,4 +48,13 @@ public class Peca {
         return descricao;
     }
 
+    public Peca(int idPeca, String nome, double valorUnitario, String descricao) {
+        this.idPeca = idPeca;
+        this.nome = nome;
+        this.valorUnitario = valorUnitario;
+        this.descricao = descricao;
+    }
+
+    
+    
 }

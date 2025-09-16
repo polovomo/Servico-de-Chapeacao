@@ -5,6 +5,10 @@
  */
 package view;
 
+import controller.UsuarioController;
+import javax.swing.JOptionPane;
+import model.Cliente;
+
 /**
  *
  * @author aluno.saolucas
@@ -74,6 +78,11 @@ public class FrCadCliente extends javax.swing.JDialog {
         btnSalvar.setBackground(new java.awt.Color(234, 106, 106));
         btnSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSalvar.setText("SALVAR");
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
+        });
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTitulo.setText("CADASTRO DE CLIENTES");
@@ -168,6 +177,31 @@ public class FrCadCliente extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnVoltarMouseClicked
 
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        gravar();
+    }//GEN-LAST:event_btnSalvarMouseClicked
+         private void gravar() {
+    
+        
+        
+        //ler os campos e guardar um objeto
+        Cliente cli = new Cliente();
+        cli.setNome(edtNomeCliente.getText());
+        cli.setTelefone(edtTelefoneCliente.getText());
+        cli.setEmail(edtEmailCliente.getText());
+        cli.setEndereco(edtEnderecoCliente.getText());
+        //cli.setFkCarro(edtFkCarro.getText());
+       
+        
+        
+        
+        //enviar para o banco de dados
+        UsuarioController controler = new UsuarioController();
+        if(controler.inserir(cli)){
+            JOptionPane.showMessageDialog(null, "Cliente Inserido");
+            this.dispose();
+        }
+    }
     /**
      * @param args the command line arguments
      */

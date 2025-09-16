@@ -65,4 +65,16 @@ public class Carro {
     public int getFkCliente() {
         return fkCliente;
     }
+
+    public Carro(int idCarro, String modelo, String marca, String placa, int anoFabricacao, int fkCliente) {
+        this.idCarro = idCarro;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.placa = placa;
+        this.anoFabricacao = anoFabricacao;
+        this.fkCliente = fkCliente;
+    }
+    
+    
+    
 }
