@@ -19,6 +19,7 @@ import model.Peca;
  * @author aluno.saolucas
  */
 public class PecaController {
+
     public boolean inserir(Peca pec) {
         String sql = "INSERT INTO tbpeca(nome, descricao, valor_unitario) VALUES (?,?,?)";
 
@@ -35,7 +36,6 @@ public class PecaController {
             comando.setString(1, pec.getNome());
             comando.setString(2, pec.getDescricao());
             comando.setDouble(3, pec.getValorUnitario());
-            
 
             //executa o comando
             comando.executeUpdate();
@@ -53,26 +53,21 @@ public class PecaController {
 
         return false;
     }
-    //tem q arrumar
+
     //TENTANDO PUXAR PARA TABELA ;ASS:BRUNO
-    public List<Cliente> consultar(int opcaoFiltro, String filtro) {
-        String sql = "SELECT * from TBCLIENTE ";
+    public List<Peca> consultar(int opcaoFiltro, String filtro) {
+        String sql = "SELECT * from TBPECA ";
 
         if (!filtro.equals("")) {
 
             if (opcaoFiltro == 0) {
-                sql += " WHERE pk_cliente = " + filtro;
+                sql += " WHERE pk_peca = " + filtro;
             } else if (opcaoFiltro == 1) {
                 sql += " WHERE nome LIKE '%" + filtro + "%'";
             } else if (opcaoFiltro == 2) {
-                sql += " WHERE email LIKE '%" + filtro + "%'";
-            } else if (opcaoFiltro == 3) {
-                sql += " WHERE telefone LIKE '%" + filtro + "%'";
-            } else if (opcaoFiltro == 4) {
-                sql += " WHERE endereco LIKE '%" + filtro + "%'";
-            }
+                sql += " WHERE descricao LIKE '%" + filtro + "%'";
+            } 
         }
-
         GerenciadorConexao gerenciador = new GerenciadorConexao();
         //declara as variaveis como nulas antes do try
         //para poder usar no finally
@@ -81,7 +76,7 @@ public class PecaController {
         ResultSet resultado = null;
 
         //crio a lista de usuários, vazia ainda
-        List<Cliente> lista = new ArrayList<>();
+        List<Peca> lista = new ArrayList<>();
 
         try {
             comando = gerenciador.prepararComando(sql);
@@ -89,15 +84,14 @@ public class PecaController {
             resultado = comando.executeQuery();
 
             while (resultado.next()) {
-                Cliente cli = new Cliente();
+                Peca pec = new Peca();
 
-                cli.setIdCliente(resultado.getInt("pk_cliente"));
-                cli.setNome(resultado.getString("nome"));
-                cli.setEmail(resultado.getString("email"));
-                cli.setTelefone(resultado.getString("telefone"));
-                cli.setEndereco(resultado.getString("endereco"));
+                pec.setIdPeca(resultado.getInt("pk_peca"));
+                pec.setNome(resultado.getString("nome"));
+                pec.setDescricao(resultado.getString("descricao"));
+                pec.setValorUnitario(resultado.getDouble("valor_unitario"));
 
-                lista.add(cli);
+                lista.add(pec);
 
             }
 
@@ -112,8 +106,4 @@ public class PecaController {
 
         return lista;
     }
-    
-    
-    
-    
 }
