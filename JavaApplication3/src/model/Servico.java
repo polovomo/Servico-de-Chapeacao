@@ -12,6 +12,7 @@ package model;
 public class Servico {
 
     private int idServico;
+    private String nomeServico;
     private String descricao;
     private double valorUnitario;
 
@@ -39,5 +40,25 @@ public class Servico {
         return valorUnitario;
     }
 
+    public String getNomeServico() {
+        return nomeServico;
+    }
+
+    public void setNomeServico(String nomeServico) {
+        this.nomeServico = nomeServico;
+    }
+
+    public Servico() {
+    }
+
+    public Servico(int idServico, String nomeServico, String descricao, double valorUnitario) {
+        this.idServico = idServico;
+        this.nomeServico = nomeServico;
+        this.descricao = descricao;
+        this.valorUnitario = valorUnitario;
+    }
+
+    
+    
 }
 

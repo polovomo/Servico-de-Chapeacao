@@ -5,6 +5,11 @@
  */
 package view;
 
+import controller.PecaController;
+import controller.UsuarioController;
+import javax.swing.JOptionPane;
+import model.Peca;
+
 /**
  *
  * @author aluno.saolucas
@@ -152,6 +157,29 @@ public class FrCadPeca extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtNomePecaActionPerformed
 
+     private void gravar() {
+        
+        //ler os campos e guardar um objeto
+        Peca peca = new Peca();
+        peca.setNome(edtNomePeca.getText());
+        double valor = Double.parseDouble(edtValorPeca.getText());
+        peca.setValorUnitario(valor);
+        peca.setDescricao(edtDescricaoPeca.getText());
+        
+        
+        
+        
+        //enviar para o banco de dados
+        PecaController controler = new PecaController();
+        if(controler.inserir(peca)){
+            JOptionPane.showMessageDialog(null, "Peça Inserida");
+            this.dispose();
+        }else{
+             JOptionPane.showMessageDialog(null, "Erro ao inserir peça");
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */

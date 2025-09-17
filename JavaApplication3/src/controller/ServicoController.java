@@ -9,28 +9,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.Carro;
-import model.Cliente;
-import model.OrdemServico;
-import model.Peca;
 import model.Servico;
-import utils.Util;
 
 /**
  *
- * @author Administrador
+ * @author aluno.saolucas
  */
-public class UsuarioController {
-    
-    
-   
-    
-    
-    
-    
-    
-    public boolean inserir(OrdemServico ordemServico) {
-    String sql = "INSERT INTO Ordem_Servico (status, valor_total, fk_cliente, fk_servico, fk_carro) VALUES (?, ?, ?, ?, ?)";
+public class ServicoController {
+    //inserindo serviço no banco
+    public boolean inserir(Servico servico) {
+    String sql = "INSERT INTO Servico (descricao, valor_unitario, nome) VALUES (?,?,?)";
 
     GerenciadorConexao gerenciador = new GerenciadorConexao();
     PreparedStatement comando = null;
@@ -40,12 +28,9 @@ public class UsuarioController {
         comando = gerenciador.prepararComando(sql);
 
         // Definindo os valores para os placeholders (?)
-        comando.setString(1, ordemServico.getStatus());
-        comando.setDouble(2, ordemServico.getValorTotal());
-        comando.setInt(3, ordemServico.getFkCliente()); // Chave estrangeira Cliente
-        comando.setInt(4, ordemServico.getFkServico()); // Chave estrangeira Servico
-        comando.setInt(5, ordemServico.getFkCarro());   // Chave estrangeira Carro
-
+        comando.setString(1, servico.getDescricao());
+        comando.setDouble(2, servico.getValorUnitario());
+        comando.setString(3,servico.getNomeServico());
         // Executa o comando de inserção
         comando.executeUpdate();
 
@@ -60,7 +45,5 @@ public class UsuarioController {
     }
 
     return false;
-}
-    
-    
+    }
 }

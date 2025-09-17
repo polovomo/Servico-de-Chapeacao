@@ -5,6 +5,8 @@
  */
 package view;
 
+import controller.ClienteController;
+import controller.PecaController;
 import controller.UsuarioController;
 import javax.swing.JOptionPane;
 import model.Cliente;
@@ -148,11 +150,11 @@ public class FrCadCliente extends javax.swing.JDialog {
                 .addComponent(lblEnderecoCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(edtEnderecoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
                     .addComponent(btnSalvar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(52, 52, 52))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,13 +192,13 @@ public class FrCadCliente extends javax.swing.JDialog {
         cli.setTelefone(edtTelefoneCliente.getText());
         cli.setEmail(edtEmailCliente.getText());
         cli.setEndereco(edtEnderecoCliente.getText());
-        //cli.setFkCarro(edtFkCarro.getText());
+        
+       
        
         
         
-        
         //enviar para o banco de dados
-        UsuarioController controler = new UsuarioController();
+        ClienteController controler = new ClienteController();
         if(controler.inserir(cli)){
             JOptionPane.showMessageDialog(null, "Cliente Inserido");
             this.dispose();

@@ -5,6 +5,12 @@
  */
 package view;
 
+import controller.CarroController;
+
+import javax.swing.JOptionPane;
+import model.Carro;
+import model.Cliente;
+
 /**
  *
  * @author aluno.saolucas
@@ -34,12 +40,14 @@ public class FrCadCarro extends javax.swing.JDialog {
         btnSalvar = new javax.swing.JButton();
         edtMarcaCarro = new javax.swing.JTextField();
         lblTitulo = new javax.swing.JLabel();
-        edtEmailCliente = new javax.swing.JTextField();
-        edtPlacCarro = new javax.swing.JTextField();
+        edtAnoCarro = new javax.swing.JTextField();
+        edtPlacaCarro = new javax.swing.JTextField();
         lblModeloCarro = new javax.swing.JLabel();
         lblAnoCarro = new javax.swing.JLabel();
         lblPlacaCarro = new javax.swing.JLabel();
         lblMarcaCarro = new javax.swing.JLabel();
+        lblPlacaCarro1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -62,9 +70,20 @@ public class FrCadCarro extends javax.swing.JDialog {
         btnSalvar.setBackground(new java.awt.Color(234, 106, 106));
         btnSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSalvar.setText("SALVAR");
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
+        });
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTitulo.setText("CADASTRO DE CARROS");
+
+        edtAnoCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtAnoCarroActionPerformed(evt);
+            }
+        });
 
         lblModeloCarro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblModeloCarro.setText("MODELO:");
@@ -77,6 +96,11 @@ public class FrCadCarro extends javax.swing.JDialog {
 
         lblMarcaCarro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblMarcaCarro.setText("MARCA:");
+
+        lblPlacaCarro1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblPlacaCarro1.setText("PROPRIETÁRIO:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -92,23 +116,15 @@ public class FrCadCarro extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                                 .addComponent(btnSalvar))
                             .addComponent(edtModeloCarro)
-                            .addComponent(edtEmailCliente, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(edtAnoCarro, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(edtMarcaCarro, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(edtPlacCarro)))
+                            .addComponent(edtPlacaCarro)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(174, 174, 174)
                         .addComponent(lblMarcaCarro)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(lblPlacaCarro)
-                .addGap(0, 181, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblAnoCarro)
-                .addGap(112, 112, 112))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(lblTitulo)
@@ -116,6 +132,24 @@ public class FrCadCarro extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(lblModeloCarro)
                         .addGap(165, 165, 165))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblAnoCarro)
+                        .addGap(112, 112, 112))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblPlacaCarro1)
+                        .addGap(142, 142, 142))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(lblPlacaCarro))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,16 +167,20 @@ public class FrCadCarro extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblAnoCarro)
                 .addGap(1, 1, 1)
-                .addComponent(edtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(edtAnoCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblPlacaCarro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(edtPlacCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(edtPlacaCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPlacaCarro1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
                     .addComponent(btnSalvar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -153,7 +191,9 @@ public class FrCadCarro extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -167,6 +207,35 @@ public class FrCadCarro extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtModeloCarroActionPerformed
 
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        gravar();
+    }//GEN-LAST:event_btnSalvarMouseClicked
+
+    private void edtAnoCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtAnoCarroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtAnoCarroActionPerformed
+ private void gravar() {
+    
+        
+        
+        //ler os campos e guardar um objeto
+        Carro carro = new Carro();
+        carro.setModelo(edtModeloCarro.getText());
+        carro.setMarca(edtMarcaCarro.getText());
+        int anoFabricacao = Integer.parseInt(edtAnoCarro.getText());
+        carro.setAnoFabricacao(anoFabricacao);
+        carro.setPlaca(edtPlacaCarro.getText());
+       
+       
+        
+        
+        //enviar para o banco de dados
+        CarroController controler = new CarroController();
+        if(controler.inserir(carro)){
+            JOptionPane.showMessageDialog(null, "Carro Inserido");
+            this.dispose();
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -212,15 +281,17 @@ public class FrCadCarro extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JTextField edtEmailCliente;
+    private javax.swing.JTextField edtAnoCarro;
     private javax.swing.JTextField edtMarcaCarro;
     private javax.swing.JTextField edtModeloCarro;
-    private javax.swing.JTextField edtPlacCarro;
+    private javax.swing.JTextField edtPlacaCarro;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAnoCarro;
     private javax.swing.JLabel lblMarcaCarro;
     private javax.swing.JLabel lblModeloCarro;
     private javax.swing.JLabel lblPlacaCarro;
+    private javax.swing.JLabel lblPlacaCarro1;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }

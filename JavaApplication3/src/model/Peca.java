@@ -55,6 +55,10 @@ public class Peca {
         this.descricao = descricao;
     }
 
+    public Peca() {
+    
+    }
+
     
     
 }

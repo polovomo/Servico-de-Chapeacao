@@ -74,6 +74,10 @@ public class Carro {
         this.anoFabricacao = anoFabricacao;
         this.fkCliente = fkCliente;
     }
+
+    public Carro() {
+    
+    }
     
     
     

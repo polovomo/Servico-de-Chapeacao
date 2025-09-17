@@ -5,6 +5,12 @@
  */
 package view;
 
+import controller.ClienteController;
+import controller.ServicoController;
+import javax.swing.JOptionPane;
+import model.Cliente;
+import model.Servico;
+
 /**
  *
  * @author aluno.saolucas
@@ -60,6 +66,11 @@ public class FrCadServico extends javax.swing.JDialog {
         btnSalvar.setBackground(new java.awt.Color(234, 106, 106));
         btnSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSalvar.setText("SALVAR");
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
+        });
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTitulo.setText("CADASTRO DE SERVIÇOS");
@@ -150,6 +161,31 @@ public class FrCadServico extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtNomeServicoActionPerformed
 
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        gravar();
+    }//GEN-LAST:event_btnSalvarMouseClicked
+         private void gravar() {
+    
+        
+        
+        //ler os campos e guardar um objeto
+        Servico servico = new Servico();
+        servico.setNomeServico(edtNomeServico.getText());
+        double valor = Double.parseDouble(edtValorServico.getText());
+        servico.setValorUnitario(valor);
+        servico.setDescricao(edtDescricaoServico.getText());
+
+        
+        
+        //enviar para o banco de dados
+        ServicoController controler = new ServicoController();
+        if(controler.inserir(servico)){
+            JOptionPane.showMessageDialog(null, "Serviço Inserido");
+            this.dispose();
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
