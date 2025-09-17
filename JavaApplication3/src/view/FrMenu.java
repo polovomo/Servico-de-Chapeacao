@@ -42,11 +42,12 @@ public class FrMenu extends javax.swing.JFrame {
         btnCadOrdemServico = new javax.swing.JButton();
         btnConCliente = new javax.swing.JButton();
         btnConPeca = new javax.swing.JButton();
-        btnConOredemServico = new javax.swing.JButton();
+        btnConOrdemServico = new javax.swing.JButton();
         btnAltCliente = new javax.swing.JButton();
         btnAltServico = new javax.swing.JButton();
         btnAltPeca = new javax.swing.JButton();
         btnCadPeca = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
@@ -120,6 +121,11 @@ public class FrMenu extends javax.swing.JFrame {
                 btnCadServicoMouseClicked(evt);
             }
         });
+        btnCadServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadServicoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCadServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 240, 40));
 
         btnCadCarro.setBackground(new java.awt.Color(234, 106, 106));
@@ -167,15 +173,15 @@ public class FrMenu extends javax.swing.JFrame {
         });
         jPanel1.add(btnConPeca, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 240, 40));
 
-        btnConOredemServico.setBackground(new java.awt.Color(234, 106, 106));
-        btnConOredemServico.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        btnConOredemServico.setText("CONSULTAR ORDEM DE SERVIÇO");
-        btnConOredemServico.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnConOrdemServico.setBackground(new java.awt.Color(234, 106, 106));
+        btnConOrdemServico.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        btnConOrdemServico.setText("CONSULTAR ORDEM DE SERVIÇO");
+        btnConOrdemServico.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnConOredemServicoMouseClicked(evt);
+                btnConOrdemServicoMouseClicked(evt);
             }
         });
-        jPanel1.add(btnConOredemServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 240, 40));
+        jPanel1.add(btnConOrdemServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 240, 40));
 
         btnAltCliente.setBackground(new java.awt.Color(234, 106, 106));
         btnAltCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -222,6 +228,9 @@ public class FrMenu extends javax.swing.JFrame {
         });
         jPanel1.add(btnCadPeca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 240, 40));
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconeP.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, -70, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -243,23 +252,28 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadOrdemServicoActionPerformed
 
     private void btnCadClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadClienteMouseClicked
-        // TODO add your handling code here:
+       FrCadCliente telaCadCliente = new FrCadCliente(this, rootPaneCheckingEnabled);
+       telaCadCliente.setVisible(true);
     }//GEN-LAST:event_btnCadClienteMouseClicked
 
     private void btnCadServicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadServicoMouseClicked
-        // TODO add your handling code here:
+       FrCadServico telaCadServico = new FrCadServico(this, rootPaneCheckingEnabled);
+       telaCadServico.setVisible(true);
     }//GEN-LAST:event_btnCadServicoMouseClicked
 
     private void btnCadCarroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadCarroMouseClicked
-        // TODO add your handling code here:
+       FrCadCarro telaCadCarro = new FrCadCarro(this, rootPaneCheckingEnabled);
+       telaCadCarro.setVisible(true);
     }//GEN-LAST:event_btnCadCarroMouseClicked
 
     private void btnCadOrdemServicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadOrdemServicoMouseClicked
-        // TODO add your handling code here:
+     //  FrCadOrdemServico telaCadOrdemServico = new FrCadOrdemServico(this, rootPaneCheckingEnabled);
+     //  telaCadOrdemServico.setVisible(true);
     }//GEN-LAST:event_btnCadOrdemServicoMouseClicked
 
     private void btnConClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConClienteMouseClicked
-        // TODO add your handling code here:
+       FrConCliente telaConCliente = new FrConCliente(this, rootPaneCheckingEnabled);
+       telaConCliente.setVisible(true);
     }//GEN-LAST:event_btnConClienteMouseClicked
 
     private void btnConCarroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConCarroMouseEntered
@@ -267,35 +281,42 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConCarroMouseEntered
 
     private void btnConCarroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConCarroMouseClicked
-        // TODO add your handling code here:
+       FrConCarro telaConCarro = new FrConCarro(this, rootPaneCheckingEnabled);
+       telaConCarro.setVisible(true);
     }//GEN-LAST:event_btnConCarroMouseClicked
 
     private void btnConPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConPecaMouseClicked
-        // TODO add your handling code here:
+       FrConPeca telaConPeca = new FrConPeca(this, rootPaneCheckingEnabled);
+       telaConPeca.setVisible(true);
     }//GEN-LAST:event_btnConPecaMouseClicked
 
-    private void btnConOredemServicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConOredemServicoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConOredemServicoMouseClicked
+    private void btnConOrdemServicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConOrdemServicoMouseClicked
+    //   FrConOrdemServico telaConOredemServico = new FrConOrdemServico(this, rootPaneCheckingEnabled);
+      // telaConOredemServico.setVisible(true);
+    }//GEN-LAST:event_btnConOrdemServicoMouseClicked
 
     private void btnAltClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAltClienteMouseClicked
-        // TODO add your handling code here:
+       FrAltCliente telaAltCliente = new FrAltCliente(this, rootPaneCheckingEnabled);
+       telaAltCliente.setVisible(true);
     }//GEN-LAST:event_btnAltClienteMouseClicked
 
     private void btnAltServicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAltServicoMouseClicked
-        // TODO add your handling code here:
+       FrAltServico telaAltServico = new FrAltServico(this, rootPaneCheckingEnabled);
+       telaAltServico.setVisible(true);
     }//GEN-LAST:event_btnAltServicoMouseClicked
 
     private void btnAltPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAltPecaMouseClicked
-        // TODO add your handling code here:
+       FrAltPeca telaAltPeca = new FrAltPeca(this, rootPaneCheckingEnabled);
+       telaAltPeca.setVisible(true);
     }//GEN-LAST:event_btnAltPecaMouseClicked
 
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
-        // TODO add your handling code here:
+       this.dispose();
     }//GEN-LAST:event_btnSairMouseClicked
 
     private void btnCadPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadPecaMouseClicked
-        // TODO add your handling code here:
+       FrCadPeca telaCadPeca = new FrCadPeca(this, rootPaneCheckingEnabled);
+       telaCadPeca.setVisible(true);
     }//GEN-LAST:event_btnCadPecaMouseClicked
 
     private void btnCadPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadPecaActionPerformed
@@ -305,6 +326,11 @@ public class FrMenu extends javax.swing.JFrame {
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnCadServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadServicoActionPerformed
+        FrCadServico telaCadServico = new FrCadServico(this, rootPaneCheckingEnabled);
+       telaCadServico.setVisible(true);
+    }//GEN-LAST:event_btnCadServicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,7 +378,7 @@ public class FrMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnCadServico;
     private javax.swing.JButton btnConCarro;
     private javax.swing.JButton btnConCliente;
-    private javax.swing.JButton btnConOredemServico;
+    private javax.swing.JButton btnConOrdemServico;
     private javax.swing.JButton btnConPeca;
     private javax.swing.JButton btnSair;
     private javax.swing.JLabel jLabel1;
@@ -360,6 +386,7 @@ public class FrMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -22,6 +22,8 @@ public class FrConCliente extends javax.swing.JDialog {
     public FrConCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
     private void pesquisar() {
         //pega o modelo da grade com suas colunas

@@ -23,6 +23,8 @@ public class FrCadServico extends javax.swing.JDialog {
     public FrCadServico(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**

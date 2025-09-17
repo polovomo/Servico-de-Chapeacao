@@ -8,11 +8,8 @@ package controller;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 import model.Carro;
-import model.Cliente;
 
 /**
  *
@@ -52,63 +49,6 @@ public class CarroController {
 
     return false;
 }
-     //TENTANDO PUXAR PARA TABELA ;ASS:BRUNO
-    public List<Carro> consultar(int opcaoFiltro, String filtro) {
-        String sql = "SELECT * from TBCARRO ";
 
-        if (!filtro.equals("")) {
-
-            if (opcaoFiltro == 0) {
-                sql += " WHERE pk_carro = " + filtro;
-            } else if (opcaoFiltro == 1) {
-                sql += " WHERE modelo LIKE '%" + filtro + "%'";
-            } else if (opcaoFiltro == 2) {
-                sql += " WHERE marca LIKE '%" + filtro + "%'";
-            } else if (opcaoFiltro == 3) {
-                sql += " WHERE placa LIKE '%" + filtro + "%'";
-            } else if (opcaoFiltro == 4) {
-                sql += " WHERE ano_fabricacao LIKE '%" + filtro + "%'";
-            }
-        }
-
-        GerenciadorConexao gerenciador = new GerenciadorConexao();
-        //declara as variaveis como nulas antes do try
-        //para poder usar no finally
-
-        PreparedStatement comando = null;
-        ResultSet resultado = null;
-
-        //crio a lista de usuários, vazia ainda
-        List<Carro> lista = new ArrayList<>();
-
-        try {
-            comando = gerenciador.prepararComando(sql);
-
-            resultado = comando.executeQuery();
-
-            while (resultado.next()) {
-               Carro carro = new Carro();
-
-                carro.setIdCarro(resultado.getInt("pk_carro"));
-                carro.setModelo(resultado.getString("modelo"));
-                carro.setMarca(resultado.getString("marca"));
-                carro.setPlaca(resultado.getString("placa"));
-                carro.setAnoFabricacao(resultado.getInt("ano_fabricacao"));
-
-                lista.add(carro);
-
-            }
-
-        } catch (SQLException e) {
-            //caso ocorra um erro relacionado ao banco de dados
-            //exibe popup com erro
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        } finally {
-            //depois de executar o try dando erro ou não executa o finally
-            gerenciador.fecharConexao(comando, resultado);
-        }
-
-        return lista;
-    }
     
 }

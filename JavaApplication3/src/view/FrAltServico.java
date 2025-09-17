@@ -17,6 +17,8 @@ public class FrAltServico extends javax.swing.JDialog {
     public FrAltServico(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**

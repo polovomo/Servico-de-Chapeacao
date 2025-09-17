@@ -17,6 +17,8 @@ public class FrAltPeca extends javax.swing.JDialog {
     public FrAltPeca(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
