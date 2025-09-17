@@ -5,10 +5,21 @@
  */
 package utils;
 
+import java.awt.Image;
+import java.net.URL;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Administrador
  */
 public class Util {
-    
+    public static Image getIcone() {
+        URL caminhoImagem = Util.class.getResource("/images/iconeP.png");
+
+        ImageIcon icon = new ImageIcon(caminhoImagem);
+
+        return icon.getImage();
+
+    }
 }

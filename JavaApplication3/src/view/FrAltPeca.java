@@ -42,6 +42,7 @@ public class FrAltPeca extends javax.swing.JDialog {
         lblAltDescricaoPeca = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Alterar Peça");
 
         lblAltValorPeca.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblAltValorPeca.setText("VALOR:");

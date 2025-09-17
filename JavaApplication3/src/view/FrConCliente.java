@@ -95,6 +95,7 @@ public class FrConCliente extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consulta de Clientes");
 
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

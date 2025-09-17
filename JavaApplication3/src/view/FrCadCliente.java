@@ -50,6 +50,7 @@ public class FrCadCliente extends javax.swing.JDialog {
         lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Cliente");
 
         edtNomeCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         edtNomeCliente.addActionListener(new java.awt.event.ActionListener() {

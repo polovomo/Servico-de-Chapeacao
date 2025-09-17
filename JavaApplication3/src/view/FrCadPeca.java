@@ -47,6 +47,7 @@ public class FrCadPeca extends javax.swing.JDialog {
         lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de peças");
 
         lblNomePeca.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblNomePeca.setText("NOME:");
