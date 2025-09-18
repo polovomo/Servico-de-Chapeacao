@@ -5,12 +5,27 @@
  */
 package view;
 
+import controller.ClienteController;
+import java.util.List;
+import javax.swing.JOptionPane;
+import model.Cliente;
+
 /**
  *
  * @author aluno.saolucas
  */
 public class FrAltCliente extends javax.swing.JDialog {
+    private int idCliente ;
 
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+    
+    
     /**
      * Creates new form FrAltCliente
      */
@@ -44,6 +59,11 @@ public class FrAltCliente extends javax.swing.JDialog {
         lblAltTelefoneCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         btnVoltar.setBackground(new java.awt.Color(234, 106, 106));
         btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -64,6 +84,11 @@ public class FrAltCliente extends javax.swing.JDialog {
         btnSalvar.setBackground(new java.awt.Color(234, 106, 106));
         btnSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSalvar.setText("SALVAR");
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
+        });
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTitulo.setText("ALTERAÇÃO DE CLIENTES");
@@ -170,6 +195,46 @@ public class FrAltCliente extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtNomeAltClienteActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+         //carregar os dados do usuario
+        ClienteController controler = new ClienteController();
+        //consultar os usuarios com o codigo igual ao que recebi
+        List<Cliente> lista = controler.consultar(0, String.valueOf(idCliente));
+
+        Cliente cli = lista.get(0);
+
+        //preencher os campos como a variável usu
+        edtNomeAltCliente.setText(cli.getNome());
+        edtAltTelefoneCliente.setText(cli.getTelefone());
+        edtAltEmailCliente.setText(cli.getEmail());
+        edtAltEnderecoCliente.setText(cli.getEndereco());
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        gravar();
+    }//GEN-LAST:event_btnSalvarMouseClicked
+    private void gravar() {
+    
+        
+        
+        //ler os campos e guardar um objeto
+        Cliente cli = new Cliente();
+        cli.setNome(edtNomeAltCliente.getText());
+        cli.setTelefone(edtAltTelefoneCliente.getText());
+        cli.setEmail(edtAltEmailCliente.getText());
+        cli.setEndereco(edtAltEnderecoCliente.getText());
+        
+       
+       
+        
+        
+        //enviar para o banco de dados
+        ClienteController controler = new ClienteController();
+        if(controler.alterar(cli)){
+            JOptionPane.showMessageDialog(null, "Cliente Alterado");
+            this.dispose();
+        }
+    }
     /**
      * @param args the command line arguments
      */

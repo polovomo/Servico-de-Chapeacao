@@ -8,7 +8,10 @@ package controller;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import model.Cliente;
 import model.Servico;
 
 /**
@@ -18,7 +21,7 @@ import model.Servico;
 public class ServicoController {
     //inserindo serviço no banco
     public boolean inserir(Servico servico) {
-    String sql = "INSERT INTO Servico (descricao, valor_unitario, nome) VALUES (?,?,?)";
+    String sql = "INSERT INTO TBSERVICO (descricao, valor_unitario, nome) VALUES (?,?,?)";
 
     GerenciadorConexao gerenciador = new GerenciadorConexao();
     PreparedStatement comando = null;
@@ -27,7 +30,7 @@ public class ServicoController {
     try {
         comando = gerenciador.prepararComando(sql);
 
-        // Definindo os valores para os placeholders (?)
+ 
         comando.setString(1, servico.getDescricao());
         comando.setDouble(2, servico.getValorUnitario());
         comando.setString(3,servico.getNomeServico());
@@ -45,5 +48,58 @@ public class ServicoController {
     }
 
     return false;
+    }
+    //TENTANDO PUXAR PARA TABELA ;ASS:BRUNO
+    public List<Servico> consultar(int opcaoFiltro, String filtro) {
+        String sql = "SELECT * from TBSERVICO ";
+
+        if (!filtro.equals("")) {
+
+            if (opcaoFiltro == 0) {
+                sql += " WHERE pk_servico = " + filtro;
+            } else if (opcaoFiltro == 1) {
+                sql += " WHERE nome LIKE '%" + filtro + "%'";
+            } else if (opcaoFiltro == 2) {
+                sql += " WHERE descricao LIKE '%" + filtro + "%'";
+            } 
+        }
+
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+        //declara as variaveis como nulas antes do try
+        //para poder usar no finally
+
+        PreparedStatement comando = null;
+        ResultSet resultado = null;
+
+        //crio a lista de usuários, vazia ainda
+        List<Servico> lista = new ArrayList<>();
+
+        try {
+            comando = gerenciador.prepararComando(sql);
+
+            resultado = comando.executeQuery();
+
+            while (resultado.next()) {
+                Servico ser = new Servico();
+
+                ser.setIdServico(resultado.getInt("pk_servico"));
+                ser.setNomeServico(resultado.getString("nome"));
+                ser.setDescricao(resultado.getString("descricao"));
+                ser.setValorUnitario(resultado.getDouble("valor_unitario"));
+
+                lista.add(ser);
+
+            }
+
+        } catch (SQLException e) {
+            //caso ocorra um erro relacionado ao banco de dados
+            //exibe popup com erro
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            //depois de executar o try dando erro ou não executa o finally
+            gerenciador.fecharConexao(comando, resultado);
+        }
+
+        return lista;
     }
 }

@@ -5,12 +5,27 @@
  */
 package view;
 
+import controller.ClienteController;
+import controller.PecaController;
+import java.util.List;
+import javax.swing.JOptionPane;
+import model.Cliente;
+import model.Peca;
+
 /**
  *
  * @author aluno.saolucas
  */
 public class FrAltPeca extends javax.swing.JDialog {
+    private int idPeca ;
 
+    public int getIdPeca() {
+        return idPeca;
+    }
+
+    public void setIdPeca(int idPeca) {
+        this.idPeca = idPeca;
+    }
     /**
      * Creates new form FrAltPeca
      */
@@ -42,6 +57,11 @@ public class FrAltPeca extends javax.swing.JDialog {
         lblAltDescricaoPeca = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lblAltValorPeca.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblAltValorPeca.setText("VALOR:");
@@ -65,6 +85,11 @@ public class FrAltPeca extends javax.swing.JDialog {
         btnSalvar.setBackground(new java.awt.Color(234, 106, 106));
         btnSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSalvar.setText("SALVAR");
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
+        });
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTitulo.setText("CADASTRO DE PEÇAS");
@@ -154,6 +179,48 @@ public class FrAltPeca extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtAltNomePecaActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+         //carregar os dados do usuario
+        PecaController controler = new PecaController();
+        //consultar os usuarios com o codigo igual ao que recebi
+        List<Peca> lista = controler.consultar(0, String.valueOf(idPeca));
+
+        Peca pec = lista.get(0);
+
+        //preencher os campos como a variável 
+        edtAltNomePeca.setText(pec.getNome());
+        edtAltValorPeca.setText(String.valueOf(pec.getValorUnitario()));
+        edtAltDescricaoPeca.setText(pec.getDescricao());
+        
+       
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+       gravar();
+    }//GEN-LAST:event_btnSalvarMouseClicked
+    private void gravar() {
+    
+        
+        
+        //ler os campos e guardar um objeto
+        Peca pec = new Peca();
+        pec.setNome(edtAltNomePeca.getText());
+        pec.setNome(edtAltValorPeca.getText());
+        pec.setNome(edtAltDescricaoPeca.getText());
+        
+       
+        
+       
+       
+        
+        
+        //enviar para o banco de dados
+       PecaController controler = new PecaController();
+        if(controler.alterar(pec)){
+            JOptionPane.showMessageDialog(null, "Peça Alterada");
+            this.dispose();
+        }
+    }
     /**
      * @param args the command line arguments
      */

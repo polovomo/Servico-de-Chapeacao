@@ -55,22 +55,20 @@ public class PecaController {
     }
     //tem q arrumar
     //TENTANDO PUXAR PARA TABELA ;ASS:BRUNO
-    public List<Cliente> consultar(int opcaoFiltro, String filtro) {
-        String sql = "SELECT * from TBCLIENTE ";
+    public List<Peca> consultar(int opcaoFiltro, String filtro) {
+        String sql = "SELECT * from TBPECA ";
 
         if (!filtro.equals("")) {
 
             if (opcaoFiltro == 0) {
-                sql += " WHERE pk_cliente = " + filtro;
+                sql += " WHERE pk_peca = " + filtro;
             } else if (opcaoFiltro == 1) {
                 sql += " WHERE nome LIKE '%" + filtro + "%'";
             } else if (opcaoFiltro == 2) {
-                sql += " WHERE email LIKE '%" + filtro + "%'";
+                sql += " WHERE descricao LIKE '%" + filtro + "%'";
             } else if (opcaoFiltro == 3) {
-                sql += " WHERE telefone LIKE '%" + filtro + "%'";
-            } else if (opcaoFiltro == 4) {
-                sql += " WHERE endereco LIKE '%" + filtro + "%'";
-            }
+                sql += " WHERE valor_unitario LIKE '%" + filtro + "%'";
+            } 
         }
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
@@ -81,7 +79,7 @@ public class PecaController {
         ResultSet resultado = null;
 
         //crio a lista de usuários, vazia ainda
-        List<Cliente> lista = new ArrayList<>();
+        List<Peca> lista = new ArrayList<>();
 
         try {
             comando = gerenciador.prepararComando(sql);
@@ -89,15 +87,14 @@ public class PecaController {
             resultado = comando.executeQuery();
 
             while (resultado.next()) {
-                Cliente cli = new Cliente();
+                Peca pec= new Peca();
 
-                cli.setIdCliente(resultado.getInt("pk_cliente"));
-                cli.setNome(resultado.getString("nome"));
-                cli.setEmail(resultado.getString("email"));
-                cli.setTelefone(resultado.getString("telefone"));
-                cli.setEndereco(resultado.getString("endereco"));
+                pec.setIdPeca(resultado.getInt("pk_peca"));
+                pec.setNome(resultado.getString("nome"));
+                pec.setDescricao(resultado.getString("descricao"));
+                pec.setValorUnitario(resultado.getDouble("valor_unitario"));
 
-                lista.add(cli);
+                lista.add(pec);
 
             }
 
@@ -113,7 +110,41 @@ public class PecaController {
         return lista;
     }
     
-    
+    public boolean alterar(Peca pec) {
+    String sql = "UPDATE tbpeca SET "
+            + "nome = ?, "
+            + "descricao = ?, "
+            + "valor_unitario = ? "
+            + "WHERE pk_peca = ?";
+
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+
+    try {
+        // Preparando o comando SQL
+        comando = gerenciador.prepararComando(sql);
+        
+        // Definindo os parâmetros para a execução
+        comando.setString(1, pec.getNome());
+        comando.setString(2, pec.getDescricao());
+        comando.setDouble(3, pec.getValorUnitario());
+        comando.setInt(4, pec.getIdPeca());  // Assume-se que a classe Peca tem o método getIdPeca()
+
+        // Executa a atualização no banco de dados
+        comando.executeUpdate();
+
+        return true;
+
+    } catch (SQLException e) {
+        // Se ocorrer algum erro no banco de dados, exibe uma mensagem de erro
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    } finally {
+        // Fechando a conexão no bloco finally
+        gerenciador.fecharConexao(comando, null);  // Não usamos o ResultSet aqui
+    }
+
+    return false;
+}
     
     
 }

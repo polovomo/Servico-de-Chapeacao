@@ -5,6 +5,13 @@
  */
 package view;
 
+import controller.ClienteController;
+import controller.PecaController;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import model.Cliente;
+import model.Peca;
+
 /**
  *
  * @author aluno.saolucas
@@ -17,8 +24,37 @@ public class FrConPeca extends javax.swing.JDialog {
     public FrConPeca(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
+    }
+
+    private void pesquisar() {
+        //pega o modelo da grade com suas colunas
+        DefaultTableModel modeloTabela = (DefaultTableModel) tblPecas.getModel();
+
+        //limpa a grade setando o numero de linhas para zero
+        modeloTabela.setNumRows(0);
+
+        int opcaoFiltro = cbxFiltro.getSelectedIndex();
+        String filtro = edtFiltro.getText();
+
+        //consultar banco de dados
+        PecaController controler = new PecaController();
+
+        List<Peca> listaPecas = controler.consultar(opcaoFiltro, filtro);
+
+        //preencher a grade
+        for (Peca pec : listaPecas) {
+            Object[] linha = {
+                pec.getIdPeca(), //0
+                pec.getNome(), //1
+                pec.getDescricao(), //2
+                pec.getValorUnitario() //3
+            };
+
+            modeloTabela.addRow(linha);
+
+        }
     }
 
     /**
@@ -30,21 +66,149 @@ public class FrConPeca extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        btnAlterar = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPecas = new javax.swing.JTable();
+        btnPesquisar = new javax.swing.JButton();
+        edtFiltro = new javax.swing.JTextField();
+        cbxFiltro = new javax.swing.JComboBox<>();
+        lblTitulo = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnAlterar.setBackground(new java.awt.Color(234, 106, 106));
+        btnAlterar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAlterar.setText("ALTERAR PEÇA");
+        btnAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAlterarMouseClicked(evt);
+            }
+        });
+
+        btnVoltar.setBackground(new java.awt.Color(234, 106, 106));
+        btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnVoltar.setText("VOLTAR");
+
+        tblPecas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "Descrição", "Valor Unitário"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblPecas);
+
+        btnPesquisar.setBackground(new java.awt.Color(234, 106, 106));
+        btnPesquisar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnPesquisar.setText("PESQUISAR");
+        btnPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPesquisarMouseClicked(evt);
+            }
+        });
+
+        cbxFiltro.setBackground(new java.awt.Color(234, 106, 106));
+        cbxFiltro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        cbxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID igual a", "Nome contendo", "Descricao contendo", " " }));
+
+        lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblTitulo.setText("CONSULTA DE PEÇAS");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTitulo)
+                        .addGap(78, 78, 78))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(cbxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(edtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnPesquisar)
+                        .addGap(23, 23, 23))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnVoltar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAlterar)))
+                .addGap(33, 33, 33))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPesquisar)
+                    .addComponent(cbxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVoltar)
+                    .addComponent(btnAlterar))
+                .addGap(47, 47, 47))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarMouseClicked
+        pesquisar();
+    }//GEN-LAST:event_btnPesquisarMouseClicked
+
+    private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
+        //valido de tem alguma linha selecionada na grade = -1
+        if (tblPecas.getSelectedRow() == -1) {
+            return;
+        }
+        //pego numero da linha selecionada
+        int posicaoLinha = tblPecas.getSelectedRow();
+
+        //pego o valor da celula na grade, na coluna 0(codigo)
+        String celula = tblPecas.getValueAt(posicaoLinha, 0).toString();
+
+        int idPeca = Integer.parseInt(celula);
+
+        FrAltPeca telaAlterar = new FrAltPeca(null, rootPaneCheckingEnabled);
+        //passso pra tela de cadastro
+
+        telaAlterar.setIdPeca(idPeca);
+
+        telaAlterar.setVisible(true);
+
+        //quando fechar a janela de alterar vai continuar aqui
+        //refazendo a pesquisa da grade para atualizar
+        pesquisar();
+
+    }//GEN-LAST:event_btnAlterarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -60,16 +224,24 @@ public class FrConPeca extends javax.swing.JDialog {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrConPeca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConPeca.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrConPeca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConPeca.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrConPeca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConPeca.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrConPeca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrConPeca.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -89,5 +261,14 @@ public class FrConPeca extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JComboBox<String> cbxFiltro;
+    private javax.swing.JTextField edtFiltro;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTable tblPecas;
     // End of variables declaration//GEN-END:variables
 }

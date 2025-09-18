@@ -41,7 +41,7 @@ public class ClienteController {
             comando.setString(1, cli.getNome());
             comando.setString(2, cli.getTelefone());
             comando.setString(3, cli.getEmail());
-            comando.setString(4, cli.getTelefone());
+            comando.setString(4, cli.getEndereco());
 
             //executa o comando
             comando.executeUpdate();
@@ -119,4 +119,46 @@ public class ClienteController {
         return lista;
     }
 
+    public boolean alterar(Cliente cli) {
+    String sql = "UPDATE tbcliente SET "
+            + " nome = ?, " //1
+            + " telefone = ?, " //2
+            + "email = ?, " //3
+            + "endereco = ? "//4
+            + "WHERE pk_cliente = ? " ;//5
+            
+
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+    ResultSet resultado = null;
+
+    try {
+        // Preparando o comando SQL
+        comando = gerenciador.prepararComando(sql);
+        
+        // Definindo os parâmetros para a execução
+        
+        comando.setString(1, cli.getNome());
+        comando.setString(2, cli.getTelefone());
+        comando.setString(3, cli.getEmail());
+        comando.setString(4, cli.getEndereco());
+        comando.setInt(5, cli.getIdCliente()); 
+        
+
+        // Executa a atualização no banco de dados
+        comando.executeUpdate();
+
+        return true;
+
+    } catch (SQLException e) {
+        // Se ocorrer algum erro no banco de dados, exibe uma mensagem de erro
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    } finally {
+        // Fechando a conexão no bloco finally
+        gerenciador.fecharConexao(comando, resultado);
+    }
+
+    return false;
+}
+    
 }
