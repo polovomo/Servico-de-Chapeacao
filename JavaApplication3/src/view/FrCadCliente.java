@@ -49,6 +49,10 @@ public class FrCadCliente extends javax.swing.JDialog {
         btnVoltar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Cliente");
@@ -58,24 +62,34 @@ public class FrCadCliente extends javax.swing.JDialog {
             }
         });
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         edtNomeCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         edtNomeCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtNomeClienteActionPerformed(evt);
             }
         });
+        jPanel1.add(edtNomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 223, -1));
+        jPanel1.add(edtTelefoneCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 223, -1));
+        jPanel1.add(edtEmailCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 223, -1));
+        jPanel1.add(edtEnderecoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 223, -1));
 
         lblNomeCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblNomeCliente.setText("NOME:");
+        jPanel1.add(lblNomeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
 
         lblEmailCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblEmailCliente.setText("E-MAIL:");
+        jPanel1.add(lblEmailCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
 
         lblEnderecoCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblEnderecoCliente.setText("ENDEREÇO:");
+        jPanel1.add(lblEnderecoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, -1));
 
         lblTelefoneCliente2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblTelefoneCliente2.setText("TELEFONE:");
+        jPanel1.add(lblTelefoneCliente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
 
         btnVoltar.setBackground(new java.awt.Color(234, 106, 106));
         btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -85,6 +99,7 @@ public class FrCadCliente extends javax.swing.JDialog {
                 btnVoltarMouseClicked(evt);
             }
         });
+        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
 
         btnSalvar.setBackground(new java.awt.Color(234, 106, 106));
         btnSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -94,87 +109,33 @@ public class FrCadCliente extends javax.swing.JDialog {
                 btnSalvarMouseClicked(evt);
             }
         });
+        jPanel1.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, -1, -1));
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTitulo.setText("CADASTRO DE CLIENTES");
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTitulo)
-                        .addGap(58, 58, 58))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblNomeCliente)
-                        .addGap(186, 186, 186))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnVoltar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                                .addComponent(btnSalvar))
-                            .addComponent(edtNomeCliente)
-                            .addComponent(edtEmailCliente, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(edtTelefoneCliente, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(edtEnderecoCliente)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(lblTelefoneCliente2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(lblEmailCliente))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(lblEnderecoCliente)))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lblTitulo)
-                .addGap(18, 18, 18)
-                .addComponent(lblNomeCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(edtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(lblTelefoneCliente2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(edtTelefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblEmailCliente)
-                .addGap(1, 1, 1)
-                .addComponent(edtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblEnderecoCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(edtEnderecoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltar)
-                    .addComponent(btnSalvar))
-                .addGap(52, 52, 52))
-        );
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/11108091_flickr_online_social_media_icon.png"))); // NOI18N
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -40, 90, 60));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2203520_circle_dot_record_round_icon.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, -40, 70, 100));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2203520_circle_dot_record_round_icon.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 310, 70, 100));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/11108091_flickr_online_social_media_icon.png"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 60, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -291,6 +252,10 @@ public class FrCadCliente extends javax.swing.JDialog {
     private javax.swing.JTextField edtEnderecoCliente;
     private javax.swing.JTextField edtNomeCliente;
     private javax.swing.JTextField edtTelefoneCliente;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblEmailCliente;
     private javax.swing.JLabel lblEnderecoCliente;

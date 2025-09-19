@@ -99,7 +99,7 @@ public class FrConPeca extends javax.swing.JDialog {
                 btnAlterarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, -1, -1));
+        jPanel1.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, -1, -1));
 
         btnVoltar.setBackground(new java.awt.Color(234, 106, 106));
         btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -109,7 +109,7 @@ public class FrConPeca extends javax.swing.JDialog {
                 btnVoltarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, -1, -1));
+        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, -1));
 
         tblPecas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -58,14 +58,20 @@ public class FrAltCliente extends javax.swing.JDialog {
         lblAltEmailCliente = new javax.swing.JLabel();
         lblAltEnderecoCliente = new javax.swing.JLabel();
         lblAltTelefoneCliente = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Alterar Cliente");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
-        setTitle("Alterar Cliente");
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnVoltar.setBackground(new java.awt.Color(234, 106, 106));
         btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -75,6 +81,7 @@ public class FrAltCliente extends javax.swing.JDialog {
                 btnVoltarMouseClicked(evt);
             }
         });
+        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 303, -1, -1));
 
         edtNomeAltCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         edtNomeAltCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -82,6 +89,7 @@ public class FrAltCliente extends javax.swing.JDialog {
                 edtNomeAltClienteActionPerformed(evt);
             }
         });
+        jPanel1.add(edtNomeAltCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 84, 223, -1));
 
         btnSalvar.setBackground(new java.awt.Color(234, 106, 106));
         btnSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -91,99 +99,52 @@ public class FrAltCliente extends javax.swing.JDialog {
                 btnSalvarMouseClicked(evt);
             }
         });
+        jPanel1.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 303, -1, -1));
+        jPanel1.add(edtAltTelefoneCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 148, 223, -1));
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTitulo.setText("ALTERAÇÃO DE CLIENTES");
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 14, -1, -1));
+        jPanel1.add(edtAltEmailCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 202, 223, -1));
+        jPanel1.add(edtAltEnderecoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(87, 261, 223, -1));
 
         lblNomeAltCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblNomeAltCliente.setText("NOME:");
+        jPanel1.add(lblNomeAltCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 61, -1, -1));
 
         lblAltEmailCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblAltEmailCliente.setText("E-MAIL:");
+        jPanel1.add(lblAltEmailCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 184, -1, -1));
 
         lblAltEnderecoCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblAltEnderecoCliente.setText("ENDEREÇO:");
+        jPanel1.add(lblAltEnderecoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 238, -1, -1));
 
         lblAltTelefoneCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblAltTelefoneCliente.setText("TELEFONE:");
+        jPanel1.add(lblAltTelefoneCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 125, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnVoltar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                                .addComponent(btnSalvar))
-                            .addComponent(edtNomeAltCliente)
-                            .addComponent(edtAltEmailCliente, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(edtAltTelefoneCliente, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(edtAltEnderecoCliente)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(lblAltTelefoneCliente)))
-                .addContainerGap(81, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addComponent(lblAltEmailCliente))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(lblAltEnderecoCliente)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblNomeAltCliente)
-                        .addGap(167, 167, 167))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTitulo)
-                        .addGap(37, 37, 37))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lblTitulo)
-                .addGap(18, 18, 18)
-                .addComponent(lblNomeAltCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(edtNomeAltCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(lblAltTelefoneCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(edtAltTelefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblAltEmailCliente)
-                .addGap(1, 1, 1)
-                .addComponent(edtAltEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblAltEnderecoCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(edtAltEnderecoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltar)
-                    .addComponent(btnSalvar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2203520_circle_dot_record_round_icon.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 300, 70, 100));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/11108091_flickr_online_social_media_icon.png"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 60, 60));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2203520_circle_dot_record_round_icon.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, -50, 70, 100));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/11108091_flickr_online_social_media_icon.png"))); // NOI18N
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -40, 60, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -310,6 +271,10 @@ public class FrAltCliente extends javax.swing.JDialog {
     private javax.swing.JTextField edtAltEnderecoCliente;
     private javax.swing.JTextField edtAltTelefoneCliente;
     private javax.swing.JTextField edtNomeAltCliente;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAltEmailCliente;
     private javax.swing.JLabel lblAltEnderecoCliente;

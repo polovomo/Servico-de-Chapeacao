@@ -25,6 +25,8 @@ public class FrConServico extends javax.swing.JDialog {
     public FrConServico(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
 private void pesquisar() {
         //pega o modelo da grade com suas colunas
@@ -89,14 +91,14 @@ private void pesquisar() {
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTitulo.setText("CONSULTA DE SERVIÇOS");
-        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
         edtFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtFiltroActionPerformed(evt);
             }
         });
-        jPanel1.add(edtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 60, 230, -1));
+        jPanel1.add(edtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 60, 250, -1));
 
         cbxFiltro.setBackground(new java.awt.Color(234, 106, 106));
         cbxFiltro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -106,7 +108,7 @@ private void pesquisar() {
                 cbxFiltroActionPerformed(evt);
             }
         });
-        jPanel1.add(cbxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 150, -1));
+        jPanel1.add(cbxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 130, -1));
 
         btnPesquisar.setBackground(new java.awt.Color(234, 106, 106));
         btnPesquisar.setText("PESQUISAR");
@@ -156,7 +158,7 @@ private void pesquisar() {
                 btnVoltarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, -1, -1));
+        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, -1));
 
         btnAlterar.setBackground(new java.awt.Color(234, 106, 106));
         btnAlterar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -171,7 +173,7 @@ private void pesquisar() {
                 btnAlterarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
+        jPanel1.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/11108091_flickr_online_social_media_icon.png"))); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 60, 60));

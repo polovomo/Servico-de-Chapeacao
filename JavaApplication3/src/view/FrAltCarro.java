@@ -57,6 +57,10 @@ public class FrAltCarro extends javax.swing.JDialog {
         lblModeloCarro = new javax.swing.JLabel();
         lblMarcaCarro = new javax.swing.JLabel();
         edtMarcaCarro = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -89,7 +93,7 @@ public class FrAltCarro extends javax.swing.JDialog {
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTitulo.setText("ALTERAR  CARROS");
-        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
         jPanel1.add(edtPlacaCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 240, -1));
 
         lblPlacaCarro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -124,6 +128,18 @@ public class FrAltCarro extends javax.swing.JDialog {
         jPanel1.add(lblMarcaCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
         jPanel1.add(edtMarcaCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 228, -1));
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2203520_circle_dot_record_round_icon.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 310, 70, 100));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/11108091_flickr_online_social_media_icon.png"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 60, 60));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2203520_circle_dot_record_round_icon.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, -50, 70, 100));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/11108091_flickr_online_social_media_icon.png"))); // NOI18N
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -40, 60, 60));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,7 +148,7 @@ public class FrAltCarro extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -274,6 +290,10 @@ public class FrAltCarro extends javax.swing.JDialog {
     private javax.swing.JTextField edtMarcaCarro;
     private javax.swing.JTextField edtModeloCarro;
     private javax.swing.JTextField edtPlacaCarro;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAnoCarro;
     private javax.swing.JLabel lblMarcaCarro;
