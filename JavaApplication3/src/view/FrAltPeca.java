@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Peca;
+import utils.Util;
 
 /**
  *
@@ -62,6 +63,7 @@ public class FrAltPeca extends javax.swing.JDialog {
                 formWindowOpened(evt);
             }
         });
+        setTitle("Alterar Peça");
 
         lblAltValorPeca.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblAltValorPeca.setText("VALOR:");
@@ -180,7 +182,11 @@ public class FrAltPeca extends javax.swing.JDialog {
     }//GEN-LAST:event_edtAltNomePecaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-         //carregar os dados do usuario
+        
+        //seta o icone
+        this.setIconImage(Util.getIcone()); 
+
+        //carregar os dados do usuario
         PecaController controler = new PecaController();
         //consultar os usuarios com o codigo igual ao que recebi
         List<Peca> lista = controler.consultar(0, String.valueOf(idPeca));
@@ -200,13 +206,16 @@ public class FrAltPeca extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalvarMouseClicked
     private void gravar() {
     
-        
+        if (!verificarCampos()) {
+        return;
+    }
         
         //ler os campos e guardar um objeto
         Peca pec = new Peca();
         pec.setNome(edtAltNomePeca.getText());
-        pec.setNome(edtAltValorPeca.getText());
-        pec.setNome(edtAltDescricaoPeca.getText());
+        pec.setValorUnitario(Double.parseDouble(edtAltValorPeca.getText()));
+        pec.setDescricao(edtAltDescricaoPeca.getText());
+        pec.setIdPeca(idPeca);
         
        
         
@@ -221,6 +230,31 @@ public class FrAltPeca extends javax.swing.JDialog {
             this.dispose();
         }
     }
+    
+        private boolean verificarCampos() {
+    if (edtAltNomePeca.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Nome da Peça em branco!");
+        return false;
+    }
+    if (edtAltValorPeca.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Valor Unitário em branco!");
+        return false;
+    }
+    if (edtAltDescricaoPeca.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Descrição em branco!");
+        return false;
+    }
+
+    
+    try {
+        Double.parseDouble(edtAltValorPeca.getText());
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Valor Unitário inválido! Digite um número.");
+        return false;
+    }
+
+    return true;
+}
     /**
      * @param args the command line arguments
      */

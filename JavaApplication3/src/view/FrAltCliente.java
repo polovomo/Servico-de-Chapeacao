@@ -9,13 +9,15 @@ import controller.ClienteController;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.Cliente;
+import utils.Util;
 
 /**
  *
  * @author aluno.saolucas
  */
 public class FrAltCliente extends javax.swing.JDialog {
-    private int idCliente ;
+
+    private int idCliente;
 
     public int getIdCliente() {
         return idCliente;
@@ -24,15 +26,14 @@ public class FrAltCliente extends javax.swing.JDialog {
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
-    
-    
+
     /**
      * Creates new form FrAltCliente
      */
     public FrAltCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
     }
 
@@ -64,6 +65,7 @@ public class FrAltCliente extends javax.swing.JDialog {
                 formWindowOpened(evt);
             }
         });
+        setTitle("Alterar Cliente");
 
         btnVoltar.setBackground(new java.awt.Color(234, 106, 106));
         btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -196,7 +198,11 @@ public class FrAltCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_edtNomeAltClienteActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-         //carregar os dados do usuario
+
+        //seta o icone
+        this.setIconImage(Util.getIcone());
+
+        //carregar os dados do usuario
         ClienteController controler = new ClienteController();
         //consultar os usuarios com o codigo igual ao que recebi
         List<Cliente> lista = controler.consultar(0, String.valueOf(idCliente));
@@ -214,30 +220,50 @@ public class FrAltCliente extends javax.swing.JDialog {
         gravar();
     }//GEN-LAST:event_btnSalvarMouseClicked
     private void gravar() {
-    
-        
-        
+
+        if (!verificarCampos()) {
+            return;
+        }
+
         //ler os campos e guardar um objeto
         Cliente cli = new Cliente();
+        cli.setIdCliente(idCliente);
         cli.setNome(edtNomeAltCliente.getText());
         cli.setTelefone(edtAltTelefoneCliente.getText());
         cli.setEmail(edtAltEmailCliente.getText());
         cli.setEndereco(edtAltEnderecoCliente.getText());
-        
-       
-       
-        
-        
+
         //enviar para o banco de dados
         ClienteController controler = new ClienteController();
-        if(controler.alterar(cli)){
+        if (controler.alterar(cli)) {
             JOptionPane.showMessageDialog(null, "Cliente Alterado");
             this.dispose();
         }
     }
-    /**
-     * @param args the command line arguments
-     */
+
+    private boolean verificarCampos() {
+        if (edtNomeAltCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo Nome em branco!");
+            return false;
+        }
+        if (edtAltTelefoneCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo Telefone em branco!");
+            return false;
+        }
+        if (edtAltEmailCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo E-mail em branco!");
+            return false;
+        }
+        if (edtAltEnderecoCliente.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo Endereço em branco!");
+            return false;
+        }
+
+        return true;
+    }
+        /**
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

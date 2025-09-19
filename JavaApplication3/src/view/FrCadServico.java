@@ -10,6 +10,7 @@ import controller.ServicoController;
 import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Servico;
+import utils.Util;
 
 /**
  *
@@ -48,6 +49,12 @@ public class FrCadServico extends javax.swing.JDialog {
         lblValorServico = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Serviços");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         btnVoltar.setBackground(new java.awt.Color(234, 106, 106));
         btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -166,9 +173,15 @@ public class FrCadServico extends javax.swing.JDialog {
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
         gravar();
     }//GEN-LAST:event_btnSalvarMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       this.setIconImage(Util.getIcone()); 
+    }//GEN-LAST:event_formWindowOpened
          private void gravar() {
     
-        
+         if (!verificarCampos()) {
+        return;
+    }
         
         //ler os campos e guardar um objeto
         Servico servico = new Servico();
@@ -187,6 +200,34 @@ public class FrCadServico extends javax.swing.JDialog {
         }
     }
     
+         private boolean verificarCampos() {
+    if (edtNomeServico.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Nome do Serviço em branco!");
+        return false;
+    }
+    if (edtValorServico.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Valor Unitário em branco!");
+        return false;
+    }
+    if (edtDescricaoServico.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Descrição em branco!");
+        return false;
+    }
+
+    // Validação do valor numérico e positivo
+    try {
+        double valor = Double.parseDouble(edtValorServico.getText());
+        if (valor < 0) {
+            JOptionPane.showMessageDialog(null, "O valor do serviço não pode ser negativo!");
+            return false;
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Valor Unitário inválido! Digite um número.");
+        return false;
+    }
+
+    return true;
+}
     
     /**
      * @param args the command line arguments

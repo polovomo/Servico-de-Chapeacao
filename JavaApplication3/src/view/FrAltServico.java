@@ -5,6 +5,14 @@
  */
 package view;
 
+import controller.PecaController;
+import controller.ServicoController;
+import java.util.List;
+import javax.swing.JOptionPane;
+import model.Peca;
+import model.Servico;
+import utils.Util;
+
 /**
  *
  * @author aluno.saolucas
@@ -17,8 +25,17 @@ public class FrAltServico extends javax.swing.JDialog {
     public FrAltServico(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
+    }
+    private int idServico;
+
+    public int getIdServico() {
+        return idServico;
+    }
+
+    public void setIdServico(int idServico) {
+        this.idServico = idServico;
     }
 
     /**
@@ -42,6 +59,12 @@ public class FrAltServico extends javax.swing.JDialog {
         lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Alterar Serviço");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lblAltlNomeServico.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblAltlNomeServico.setText("NOME:");
@@ -71,6 +94,11 @@ public class FrAltServico extends javax.swing.JDialog {
         btnSalvar.setBackground(new java.awt.Color(234, 106, 106));
         btnSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSalvar.setText("SALVAR");
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
+        });
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTitulo.setText("ALTERAÇÃO DE SERVIÇOS");
@@ -152,6 +180,81 @@ public class FrAltServico extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtAltNomeServicoActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        //Seta o icone
+        this.setIconImage(Util.getIcone());
+
+        //carregar os dados do usuario
+        ServicoController controler = new ServicoController();
+        //consultar os usuarios com o codigo igual ao que recebi
+        List<Servico> lista = controler.consultar(0, String.valueOf(idServico));
+
+        Servico ser = lista.get(0);
+
+        //preencher os campos como a variável 
+        
+        edtAltNomeServico.setText(ser.getNomeServico());
+        edtAltValorServico.setText(String.valueOf(ser.getValorUnitario()));
+        edtAltDescricaoServico.setText(ser.getDescricao());
+
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        gravar();
+    }//GEN-LAST:event_btnSalvarMouseClicked
+
+    private void gravar() {
+
+        
+        if (!verificarCampos()) {
+        return;
+    }
+        
+        //ler os campos e guardar um objeto
+        Servico ser = new Servico();
+        ser.setNomeServico(edtAltNomeServico.getText());
+        ser.setValorUnitario(Double.parseDouble(edtAltValorServico.getText()));
+        ser.setDescricao(edtAltDescricaoServico.getText());
+        ser.setIdServico(idServico);
+
+        //enviar para o banco de dados
+        ServicoController controler = new ServicoController();
+        if (controler.alterar(ser)) {
+            JOptionPane.showMessageDialog(null, "Serviço Alterado");
+            this.dispose();
+        }
+    }
+    
+    private boolean verificarCampos() {
+    if (edtAltNomeServico.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Nome do Serviço em branco!");
+        return false;
+    }
+    if (edtAltValorServico.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Valor Unitário em branco!");
+        return false;
+    }
+    if (edtAltDescricaoServico.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Descrição em branco!");
+        return false;
+    }
+
+    // Validação do valor numérico e positivo
+    try {
+        double valor = Double.parseDouble(edtAltValorServico.getText());
+        if (valor < 0) {
+            JOptionPane.showMessageDialog(null, "O valor do serviço não pode ser negativo!");
+            return false;
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Valor Unitário inválido! Digite um número.");
+        return false;
+    }
+
+    return true;
+}
     /**
      * @param args the command line arguments
      */

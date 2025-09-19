@@ -9,6 +9,7 @@ import controller.PecaController;
 import controller.UsuarioController;
 import javax.swing.JOptionPane;
 import model.Peca;
+import utils.Util;
 
 /**
  *
@@ -47,6 +48,12 @@ public class FrCadPeca extends javax.swing.JDialog {
         lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de peças");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lblNomePeca.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblNomePeca.setText("NOME:");
@@ -159,8 +166,17 @@ public class FrCadPeca extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtNomePecaActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       this.setIconImage(Util.getIcone()); 
+    }//GEN-LAST:event_formWindowOpened
+
      private void gravar() {
         
+          if (!verificarCampos()) {
+        return;
+    }
+         
+         
         //ler os campos e guardar um objeto
         Peca peca = new Peca();
         peca.setNome(edtNomePeca.getText());
@@ -181,6 +197,30 @@ public class FrCadPeca extends javax.swing.JDialog {
         }
     }
     
+     private boolean verificarCampos() {
+    if (edtNomePeca.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Nome da Peça em branco!");
+        return false;
+    }
+    if (edtValorPeca.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Valor Unitário em branco!");
+        return false;
+    }
+    if (edtDescricaoPeca.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Descrição em branco!");
+        return false;
+    }
+
+    
+    try {
+        Double.parseDouble(edtValorPeca.getText());
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Valor Unitário inválido! Digite um número.");
+        return false;
+    }
+
+    return true;
+}
     
     /**
      * @param args the command line arguments

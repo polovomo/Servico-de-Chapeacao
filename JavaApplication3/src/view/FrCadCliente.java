@@ -10,6 +10,7 @@ import controller.PecaController;
 import controller.UsuarioController;
 import javax.swing.JOptionPane;
 import model.Cliente;
+import utils.Util;
 
 /**
  *
@@ -50,6 +51,12 @@ public class FrCadCliente extends javax.swing.JDialog {
         lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Cliente");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         edtNomeCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         edtNomeCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -184,9 +191,15 @@ public class FrCadCliente extends javax.swing.JDialog {
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
         gravar();
     }//GEN-LAST:event_btnSalvarMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    this.setIconImage(Util.getIcone());       
+    }//GEN-LAST:event_formWindowOpened
          private void gravar() {
     
-        
+        if (!verificarCampos()) {
+        return; 
+    }
         
         //ler os campos e guardar um objeto
         Cliente cli = new Cliente();
@@ -206,6 +219,29 @@ public class FrCadCliente extends javax.swing.JDialog {
             this.dispose();
         }
     }
+         
+         
+         
+         private boolean verificarCampos() {
+    if (edtNomeCliente.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Nome em branco!");
+        return false;
+    }
+    if (edtTelefoneCliente.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Telefone em branco!");
+        return false;
+    }
+    if (edtEmailCliente.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo E-mail em branco!");
+        return false;
+    }
+    if (edtEnderecoCliente.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Campo Endereço em branco!");
+        return false;
+    }
+
+    return true;
+}
     /**
      * @param args the command line arguments
      */

@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.Peca;
 import model.Servico;
+import utils.Util;
 
 /**
  *
@@ -71,17 +72,31 @@ private void pesquisar() {
         tblServicos = new javax.swing.JTable();
         btnVoltar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consulta do Serviço");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTitulo.setText("CONSULTA DE SERVIÇOS");
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
         edtFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtFiltroActionPerformed(evt);
             }
         });
+        jPanel1.add(edtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 60, 230, -1));
 
         cbxFiltro.setBackground(new java.awt.Color(234, 106, 106));
         cbxFiltro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -91,6 +106,7 @@ private void pesquisar() {
                 cbxFiltroActionPerformed(evt);
             }
         });
+        jPanel1.add(cbxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 150, -1));
 
         btnPesquisar.setBackground(new java.awt.Color(234, 106, 106));
         btnPesquisar.setText("PESQUISAR");
@@ -104,9 +120,13 @@ private void pesquisar() {
                 btnPesquisarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 110, 30));
 
         tblServicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -126,6 +146,8 @@ private void pesquisar() {
         });
         jScrollPane1.setViewportView(tblServicos);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 480, 140));
+
         btnVoltar.setBackground(new java.awt.Color(234, 106, 106));
         btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnVoltar.setText("VOLTAR");
@@ -134,6 +156,7 @@ private void pesquisar() {
                 btnVoltarMouseClicked(evt);
             }
         });
+        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, -1, -1));
 
         btnAlterar.setBackground(new java.awt.Color(234, 106, 106));
         btnAlterar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -148,62 +171,31 @@ private void pesquisar() {
                 btnAlterarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(btnVoltar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAlterar)
-                .addGap(35, 35, 35))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(cbxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(edtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTitulo)
-                        .addGap(84, 84, 84))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitulo)
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(edtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAlterar)
-                    .addComponent(btnVoltar))
-                .addGap(14, 14, 14))
-        );
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/11108091_flickr_online_social_media_icon.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 60, 60));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/11108091_flickr_online_social_media_icon.png"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -40, 60, 60));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2203520_circle_dot_record_round_icon.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, -50, 70, 100));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2203520_circle_dot_record_round_icon.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 300, 70, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -230,7 +222,7 @@ private void pesquisar() {
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
-//FAZER AMANHA
+
         //valido de tem alguma linha selecionada na grade = -1
         if (tblServicos.getSelectedRow() == -1) {
             return;
@@ -241,12 +233,12 @@ private void pesquisar() {
         //pego o valor da celula na grade, na coluna 0(codigo)
         String celula = tblServicos.getValueAt(posicaoLinha, 0).toString();
 
-        int idCliente = Integer.parseInt(celula);
+        int idServico = Integer.parseInt(celula);
 
-        FrAltCliente telaAlterar = new FrAltCliente(null, rootPaneCheckingEnabled);
+        FrAltServico telaAlterar = new FrAltServico(null, rootPaneCheckingEnabled);
         //passso pra tela de cadastro
 
-        telaAlterar.setIdCliente(idCliente);
+        telaAlterar.setIdServico(idServico);
 
         telaAlterar.setVisible(true);
 
@@ -259,6 +251,10 @@ private void pesquisar() {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
 
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+         this.setIconImage(Util.getIcone()); 
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -308,6 +304,10 @@ private void pesquisar() {
     private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox<String> cbxFiltro;
     private javax.swing.JTextField edtFiltro;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;

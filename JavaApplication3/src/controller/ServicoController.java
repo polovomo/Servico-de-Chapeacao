@@ -102,4 +102,45 @@ public class ServicoController {
 
         return lista;
     }
+    
+    
+    public boolean alterar(Servico ser) {
+    String sql = "UPDATE TBSERVICO SET "
+            + "nome = ?, "
+            + "descricao = ?, "
+            + "valor_unitario = ? "
+            + "WHERE pk_servico = ?";
+            
+
+    GerenciadorConexao gerenciador = new GerenciadorConexao();
+    PreparedStatement comando = null;
+    ResultSet resultado = null;
+
+    try {
+        // Preparando o comando SQL
+        comando = gerenciador.prepararComando(sql);
+        
+        // Definindo os parâmetros para a execução
+        
+       comando.setString(1, ser.getNomeServico());
+        comando.setString(2, ser.getDescricao());
+        comando.setDouble(3, ser.getValorUnitario());
+        comando.setInt(4, ser.getIdServico());  
+        
+
+        // Executa a atualização no banco de dados
+        comando.executeUpdate();
+
+        return true;
+
+    } catch (SQLException e) {
+        // Se ocorrer algum erro no banco de dados, exibe uma mensagem de erro
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    } finally {
+        // Fechando a conexão no bloco finally
+        gerenciador.fecharConexao(comando, resultado);
+    }
+
+    return false;
+}
 }

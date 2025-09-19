@@ -5,6 +5,8 @@
  */
 package view;
 
+import utils.Util;
+
 /**
  *
  * @author Administrador
@@ -42,23 +44,24 @@ public class FrMenu extends javax.swing.JFrame {
         btnCadOrdemServico = new javax.swing.JButton();
         btnConCliente = new javax.swing.JButton();
         btnConPeca = new javax.swing.JButton();
-        btnConOrdemServico = new javax.swing.JButton();
-        btnAltCliente = new javax.swing.JButton();
-        btnAltServico = new javax.swing.JButton();
-        btnAltPeca = new javax.swing.JButton();
+        btnConServico = new javax.swing.JButton();
         btnCadPeca = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(235, 235, 235));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnSair.setBackground(new java.awt.Color(0, 0, 0));
-        btnSair.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnSair.setForeground(new java.awt.Color(255, 255, 255));
-        btnSair.setText("X");
+        btnSair.setBackground(new java.awt.Color(234, 106, 106));
+        btnSair.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnSair.setText("SAIR");
         btnSair.setBorder(null);
         btnSair.setBorderPainted(false);
         btnSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -72,7 +75,7 @@ public class FrMenu extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 30, 30));
+        jPanel1.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 240, 40));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("Seja Bem Vindo!!");
@@ -111,7 +114,7 @@ public class FrMenu extends javax.swing.JFrame {
                 btnConCarroMouseEntered(evt);
             }
         });
-        jPanel1.add(btnConCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 240, 40));
+        jPanel1.add(btnConCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 240, 40));
 
         btnCadServico.setBackground(new java.awt.Color(234, 106, 106));
         btnCadServico.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -151,7 +154,7 @@ public class FrMenu extends javax.swing.JFrame {
                 btnCadOrdemServicoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCadOrdemServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 240, 40));
+        jPanel1.add(btnCadOrdemServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 240, 40));
 
         btnConCliente.setBackground(new java.awt.Color(234, 106, 106));
         btnConCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -161,7 +164,7 @@ public class FrMenu extends javax.swing.JFrame {
                 btnConClienteMouseClicked(evt);
             }
         });
-        jPanel1.add(btnConCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 240, 40));
+        jPanel1.add(btnConCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 240, 40));
 
         btnConPeca.setBackground(new java.awt.Color(234, 106, 106));
         btnConPeca.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -171,47 +174,22 @@ public class FrMenu extends javax.swing.JFrame {
                 btnConPecaMouseClicked(evt);
             }
         });
-        jPanel1.add(btnConPeca, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 240, 40));
-
-        btnConOrdemServico.setBackground(new java.awt.Color(234, 106, 106));
-        btnConOrdemServico.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        btnConOrdemServico.setText("CONSULTAR ORDEM DE SERVIÇO");
-        btnConOrdemServico.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnConOrdemServicoMouseClicked(evt);
+        btnConPeca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConPecaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnConOrdemServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 240, 40));
+        jPanel1.add(btnConPeca, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 240, 40));
 
-        btnAltCliente.setBackground(new java.awt.Color(234, 106, 106));
-        btnAltCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnAltCliente.setText("ALTERAR CLIENTE");
-        btnAltCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnConServico.setBackground(new java.awt.Color(234, 106, 106));
+        btnConServico.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnConServico.setText("CONSULTAR  SERVIÇO");
+        btnConServico.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAltClienteMouseClicked(evt);
+                btnConServicoMouseClicked(evt);
             }
         });
-        jPanel1.add(btnAltCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 240, 40));
-
-        btnAltServico.setBackground(new java.awt.Color(234, 106, 106));
-        btnAltServico.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnAltServico.setText("ALTERAR SERVIÇO");
-        btnAltServico.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAltServicoMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnAltServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 240, 40));
-
-        btnAltPeca.setBackground(new java.awt.Color(234, 106, 106));
-        btnAltPeca.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnAltPeca.setText("ALTERAR PEÇA");
-        btnAltPeca.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAltPecaMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnAltPeca, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 240, 40));
+        jPanel1.add(btnConServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 240, 40));
 
         btnCadPeca.setBackground(new java.awt.Color(234, 106, 106));
         btnCadPeca.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -226,7 +204,7 @@ public class FrMenu extends javax.swing.JFrame {
                 btnCadPecaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCadPeca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 240, 40));
+        jPanel1.add(btnCadPeca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 240, 40));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconeP.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, -70, -1, -1));
@@ -290,25 +268,10 @@ public class FrMenu extends javax.swing.JFrame {
        telaConPeca.setVisible(true);
     }//GEN-LAST:event_btnConPecaMouseClicked
 
-    private void btnConOrdemServicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConOrdemServicoMouseClicked
-    //   FrConOrdemServico telaConOredemServico = new FrConOrdemServico(this, rootPaneCheckingEnabled);
-      // telaConOredemServico.setVisible(true);
-    }//GEN-LAST:event_btnConOrdemServicoMouseClicked
-
-    private void btnAltClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAltClienteMouseClicked
-       FrAltCliente telaAltCliente = new FrAltCliente(this, rootPaneCheckingEnabled);
-       telaAltCliente.setVisible(true);
-    }//GEN-LAST:event_btnAltClienteMouseClicked
-
-    private void btnAltServicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAltServicoMouseClicked
-       FrAltServico telaAltServico = new FrAltServico(this, rootPaneCheckingEnabled);
-       telaAltServico.setVisible(true);
-    }//GEN-LAST:event_btnAltServicoMouseClicked
-
-    private void btnAltPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAltPecaMouseClicked
-       FrAltPeca telaAltPeca = new FrAltPeca(this, rootPaneCheckingEnabled);
-       telaAltPeca.setVisible(true);
-    }//GEN-LAST:event_btnAltPecaMouseClicked
+    private void btnConServicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConServicoMouseClicked
+      FrConServico telaConServico = new FrConServico(this, rootPaneCheckingEnabled);
+       telaConServico.setVisible(true);
+    }//GEN-LAST:event_btnConServicoMouseClicked
 
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
        this.dispose();
@@ -331,6 +294,14 @@ public class FrMenu extends javax.swing.JFrame {
         FrCadServico telaCadServico = new FrCadServico(this, rootPaneCheckingEnabled);
        telaCadServico.setVisible(true);
     }//GEN-LAST:event_btnCadServicoActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+      this.setIconImage(Util.getIcone()); 
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnConPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConPecaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConPecaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,9 +339,6 @@ public class FrMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAltCliente;
-    private javax.swing.JButton btnAltPeca;
-    private javax.swing.JButton btnAltServico;
     private javax.swing.JButton btnCadCarro;
     private javax.swing.JButton btnCadCliente;
     private javax.swing.JButton btnCadOrdemServico;
@@ -378,8 +346,8 @@ public class FrMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnCadServico;
     private javax.swing.JButton btnConCarro;
     private javax.swing.JButton btnConCliente;
-    private javax.swing.JButton btnConOrdemServico;
     private javax.swing.JButton btnConPeca;
+    private javax.swing.JButton btnConServico;
     private javax.swing.JButton btnSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 import model.Peca;
+import utils.Util;
 
 /**
  *
@@ -75,9 +76,20 @@ public class FrConPeca extends javax.swing.JDialog {
         edtFiltro = new javax.swing.JTextField();
         cbxFiltro = new javax.swing.JComboBox<>();
         lblTitulo = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setTitle("Consulta de Peças");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAlterar.setBackground(new java.awt.Color(234, 106, 106));
         btnAlterar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -87,13 +99,22 @@ public class FrConPeca extends javax.swing.JDialog {
                 btnAlterarMouseClicked(evt);
             }
         });
+        jPanel1.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, -1, -1));
 
         btnVoltar.setBackground(new java.awt.Color(234, 106, 106));
         btnVoltar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnVoltar.setText("VOLTAR");
+        btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVoltarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, -1, -1));
 
         tblPecas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -113,6 +134,8 @@ public class FrConPeca extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblPecas);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 450, 126));
+
         btnPesquisar.setBackground(new java.awt.Color(234, 106, 106));
         btnPesquisar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnPesquisar.setText("PESQUISAR");
@@ -121,61 +144,40 @@ public class FrConPeca extends javax.swing.JDialog {
                 btnPesquisarMouseClicked(evt);
             }
         });
+        jPanel1.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 53, -1, -1));
+        jPanel1.add(edtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 57, 210, -1));
 
         cbxFiltro.setBackground(new java.awt.Color(234, 106, 106));
         cbxFiltro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cbxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID igual a", "Nome contendo", "Descricao contendo", " " }));
+        jPanel1.add(cbxFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 56, 120, -1));
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTitulo.setText("CONSULTA DE PEÇAS");
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 6, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTitulo)
-                        .addGap(78, 78, 78))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(cbxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(edtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnPesquisar)
-                        .addGap(23, 23, 23))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnVoltar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAlterar)))
-                .addGap(33, 33, 33))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitulo)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPesquisar)
-                    .addComponent(cbxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(edtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltar)
-                    .addComponent(btnAlterar))
-                .addGap(47, 47, 47))
-        );
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/11108091_flickr_online_social_media_icon.png"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -40, 60, 60));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2203520_circle_dot_record_round_icon.png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 300, 70, 100));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/11108091_flickr_online_social_media_icon.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 60, 60));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2203520_circle_dot_record_round_icon.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, -50, 70, 100));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -209,6 +211,14 @@ public class FrConPeca extends javax.swing.JDialog {
         pesquisar();
 
     }//GEN-LAST:event_btnAlterarMouseClicked
+
+    private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnVoltarMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       this.setIconImage(Util.getIcone()); 
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -266,6 +276,10 @@ public class FrConPeca extends javax.swing.JDialog {
     private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox<String> cbxFiltro;
     private javax.swing.JTextField edtFiltro;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
