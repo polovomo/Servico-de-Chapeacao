@@ -7,7 +7,6 @@ package view;
 
 import controller.ClienteController;
 import controller.PecaController;
-import controller.UsuarioController;
 import javax.swing.JOptionPane;
 import model.Cliente;
 import utils.Util;

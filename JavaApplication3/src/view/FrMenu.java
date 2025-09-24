@@ -245,8 +245,8 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadCarroMouseClicked
 
     private void btnCadOrdemServicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadOrdemServicoMouseClicked
-     //  FrCadOrdemServico telaCadOrdemServico = new FrCadOrdemServico(this, rootPaneCheckingEnabled);
-     //  telaCadOrdemServico.setVisible(true);
+       FrCadOrdem telaCadOrdemServico = new FrCadOrdem(this, rootPaneCheckingEnabled);
+     telaCadOrdemServico.setVisible(true);
     }//GEN-LAST:event_btnCadOrdemServicoMouseClicked
 
     private void btnConClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConClienteMouseClicked

@@ -58,7 +58,9 @@ public class Servico {
         this.valorUnitario = valorUnitario;
     }
 
-    
+    public String toString(){
+        return nomeServico;
+    }
     
 }
 

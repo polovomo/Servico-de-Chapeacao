@@ -6,7 +6,6 @@
 package view;
 
 import controller.PecaController;
-import controller.UsuarioController;
 import javax.swing.JOptionPane;
 import model.Peca;
 import utils.Util;
@@ -84,7 +83,7 @@ public class FrCadPeca extends javax.swing.JDialog {
         });
         jPanel1.add(btnVoltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
 
-        edtNomePeca.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        edtNomePeca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         edtNomePeca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtNomePecaActionPerformed(evt);
@@ -95,6 +94,11 @@ public class FrCadPeca extends javax.swing.JDialog {
         btnSalvar.setBackground(new java.awt.Color(234, 106, 106));
         btnSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSalvar.setText("SALVAR");
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
+        });
         jPanel1.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
         jPanel1.add(edtValorPeca, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 223, -1));
 
@@ -139,6 +143,10 @@ public class FrCadPeca extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
        this.setIconImage(Util.getIcone()); 
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        gravar();
+    }//GEN-LAST:event_btnSalvarMouseClicked
 
      private void gravar() {
         

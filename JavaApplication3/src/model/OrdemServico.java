@@ -15,7 +15,6 @@ public class OrdemServico {
     private String status;
     private double valorTotal;
     private int fkCliente;
-    private int fkServico;
     private int fkCarro;
 
     public void setIdOrdemServico(int idOrdemServico) {
@@ -34,10 +33,7 @@ public class OrdemServico {
         this.fkCliente = fkCliente;
     }
 
-    public void setFkServico(int fkServico) {
-        this.fkServico = fkServico;
-    }
-
+    
     public void setFkCarro(int fkCarro) {
         this.fkCarro = fkCarro;
     }
@@ -58,9 +54,7 @@ public class OrdemServico {
         return fkCliente;
     }
 
-    public int getFkServico() {
-        return fkServico;
-    }
+   
 
     public int getFkCarro() {
         return fkCarro;

@@ -59,6 +59,8 @@ public class Peca {
     
     }
 
-    
+    public String toString(){
+        return nome;
+    }
     
 }

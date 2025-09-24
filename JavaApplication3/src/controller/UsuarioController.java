@@ -9,58 +9,49 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import model.Carro;
-import model.Cliente;
-import model.OrdemServico;
-import model.Peca;
-import model.Servico;
-import utils.Util;
 
 /**
  *
- * @author Administrador
+ * @author aluno.saolucas
  */
 public class UsuarioController {
     
-    
-   
-    
-    
-    
-    
-    
-    public boolean inserir(OrdemServico ordemServico) {
-    String sql = "INSERT INTO Ordem_Servico (status, valor_total, fk_cliente, fk_servico, fk_carro) VALUES (?, ?, ?, ?, ?)";
+     public boolean autentificao(String email, String senha) {
+        // Comando SQL para verificar se existe um usuário ativo com o email e senha informados
+        String sql = "SELECT * from TBUSUARIO "
+                + "WHERE email = ? and senha = ? "
+              ;
 
-    GerenciadorConexao gerenciador = new GerenciadorConexao();
-    PreparedStatement comando = null;
-    ResultSet resultado = null;
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
 
-    try {
-        comando = gerenciador.prepararComando(sql);
+        PreparedStatement comando = null;
+        ResultSet resultado = null;
 
-        // Definindo os valores para os placeholders (?)
-        comando.setString(1, ordemServico.getStatus());
-        comando.setDouble(2, ordemServico.getValorTotal());
-        comando.setInt(3, ordemServico.getFkCliente()); // Chave estrangeira Cliente
-        comando.setInt(4, ordemServico.getFkServico()); // Chave estrangeira Servico
-        comando.setInt(5, ordemServico.getFkCarro());   // Chave estrangeira Carro
+        try {
+            // Prepara o comando SQL para execução
+            comando = gerenciador.prepararComando(sql);
 
-        // Executa o comando de inserção
-        comando.executeUpdate();
+            // Define os parâmetros do comando SQL para evitar SQL Injection
+            comando.setString(1, email);
+            comando.setString(2, senha);
 
-        return true;
+            // Executa a consulta no banco de dados
+            resultado = comando.executeQuery();
 
-    } catch (SQLException e) {
-        // Caso ocorra um erro, exibe a mensagem de erro
-        JOptionPane.showMessageDialog(null, e.getMessage());
-    } finally {
-        // Fecha a conexão no final
-        gerenciador.fecharConexao(comando, resultado);
+            // Verifica se retornou algum resultado (usuário encontrado e ativo)
+            if (resultado.next()) {
+                return true; // Autenticação bem-sucedida
+            }
+        } catch (SQLException e) {
+            // Em caso de erro, exibe uma mensagem para o usuário
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        } finally {
+            // Fecha recursos de banco de dados para evitar vazamentos
+            gerenciador.fecharConexao(comando, resultado);
+        }
+
+        // Se não encontrou o usuário ou ocorreu algum problema, retorna false
+        return false;
     }
 
-    return false;
-}
-    
-    
 }

@@ -111,7 +111,7 @@ public class FrCadCarro extends javax.swing.JDialog {
                 edtAnoCarroActionPerformed(evt);
             }
         });
-        jPanel1.add(edtAnoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 240, 20));
+        jPanel1.add(edtAnoCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 240, 30));
         jPanel1.add(edtPlacaCarro, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 240, -1));
 
         lblModeloCarro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
