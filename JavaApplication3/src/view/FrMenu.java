@@ -60,8 +60,8 @@ public class FrMenu extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSair.setBackground(new java.awt.Color(234, 106, 106));
-        btnSair.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        btnSair.setText("SAIR");
+        btnSair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnSair.setText("CONSULTAR ORDEM");
         btnSair.setBorder(null);
         btnSair.setBorderPainted(false);
         btnSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -274,7 +274,8 @@ public class FrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConServicoMouseClicked
 
     private void btnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSairMouseClicked
-       this.dispose();
+      FrConOrdem telaConOrdem = new FrConOrdem(this, rootPaneCheckingEnabled);
+       telaConOrdem.setVisible(true);
     }//GEN-LAST:event_btnSairMouseClicked
 
     private void btnCadPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadPecaMouseClicked

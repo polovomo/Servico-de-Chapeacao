@@ -16,6 +16,9 @@ public class OrdemServico {
     private double valorTotal;
     private int fkCliente;
     private int fkCarro;
+    private String nomeCliente;
+    private String modeloCarrro;
+    private String placaCarro;
 
     public void setIdOrdemServico(int idOrdemServico) {
         this.idOrdemServico = idOrdemServico;
@@ -60,4 +63,32 @@ public class OrdemServico {
         return fkCarro;
     }
 
+    public OrdemServico() {
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
+    public String getModeloCarrro() {
+        return modeloCarrro;
+    }
+
+    public void setModeloCarrro(String modeloCarrro) {
+        this.modeloCarrro = modeloCarrro;
+    }
+
+    public String getPlacaCarro() {
+        return placaCarro;
+    }
+
+    public void setPlacaCarro(String placaCarro) {
+        this.placaCarro = placaCarro;
+    }
+
+    
 }

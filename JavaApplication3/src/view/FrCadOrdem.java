@@ -26,7 +26,6 @@ import model.OrdemServicoServicos;
 import model.Peca;
 import model.Servico;
 
-
 /**
  *
  * @author aluno.saolucas
@@ -367,6 +366,7 @@ public class FrCadOrdem extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         salvarOrdemServico();
+
     }//GEN-LAST:event_formWindowOpened
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
@@ -405,6 +405,7 @@ public class FrCadOrdem extends javax.swing.JDialog {
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
 
         gravar();
+
     }//GEN-LAST:event_btnSalvarMouseClicked
 
     private void gravar() {
@@ -427,18 +428,16 @@ public class FrCadOrdem extends javax.swing.JDialog {
         OrdemServico ordemServico = new OrdemServico();
         ordemServico.setFkCliente(clienteSelecionado);
         ordemServico.setFkCarro(carroSelecionado);
-        
 
         OsController controller = new OsController();
         controller.inserir(ordemServico);
         int idOrdem = controller.selecionarUltimaPk();
-        
+
         if (idOrdem <= 0) {
             JOptionPane.showMessageDialog(this, "Erro ao gerar a ordem de serviço. Tente novamente.");
             return;
         }
-        
-        
+
         OsControllerPecas control = new OsControllerPecas();
 
         DefaultTableModel modeloPecas = (DefaultTableModel) tblPecas.getModel();
@@ -452,9 +451,9 @@ public class FrCadOrdem extends javax.swing.JDialog {
             control.inserir(osp); // Método para associar a peça à ordem de serviço
 
         }
-        
-         OsControllerServicos controll = new OsControllerServicos();
-        
+
+        OsControllerServicos controll = new OsControllerServicos();
+
         // Verificar e associar os serviços
         DefaultTableModel modeloServicos = (DefaultTableModel) tblServicos.getModel();
         for (int i = 0; i < modeloServicos.getRowCount(); i++) {
@@ -463,19 +462,18 @@ public class FrCadOrdem extends javax.swing.JDialog {
             OrdemServicoServicos oss = new OrdemServicoServicos();
             oss.setIdOrdemServico(idOrdem);
             oss.setIdServico(servico.getIdServico());
-            
+
             controll.inserir(oss); // Método para associar o serviço à ordem de serviço
             
+           
             JOptionPane.showMessageDialog(null, "Ordem Salva com Sucesso!");
             this.dispose();
         }
-        
-       
 
-        
-        
-        
     }
+    
+    
+    
 
     /**
      * @param args the command line arguments
